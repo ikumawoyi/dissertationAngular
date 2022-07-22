@@ -1,0 +1,44 @@
+<h1 *ngIf="memberDetails">{{memberDetails.name}}</h1>
+
+<div class="main-content">
+    <mat-card class="list-homes" role="listitem">
+        <mat-card-title>
+            {{memberDetails.name}}
+        </mat-card-title> 
+        <mat-card-content>
+            {{memberDetails.email}}
+        </mat-card-content>
+        <mat-card-actions>
+            <a class="action-link" [routerLink]="['/members/edit', memberDetails.id]">Edit</a> | <a class="action-link" [routerLink]="['/members', memberDetails.id]">View</a> | <a class="action-link" [routerLink]="['/members/delete', memberDetails.id]">Delete</a>
+         </mat-card-actions>
+    </mat-card>      
+      
+</div>
+
+
+
+<!-- <div class="list-homes">
+        <table id="customers">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone number</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ memberDetails.name }}</td>
+                <td>{{ memberDetails.name }}</td>
+                <td>{{ memberDetails.email }}</td>
+                <td>{{ memberDetails.phoneNumber }}</td>
+                <td>{{ memberDetails.address }}</td>
+                <td><a class="action-link" [routerLink]="['/homes/edit', memberDetails.id]">Edit</a> | <a class="action-link" [routerLink]="['/homes/view', memberDetails.id]">View</a> | <a class="action-link" [routerLink]="['/homes/delete', memberDetails.id]">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div> -->

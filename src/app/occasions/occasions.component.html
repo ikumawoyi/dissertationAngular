@@ -1,0 +1,72 @@
+<div class="container mt-3">
+    <div class="row m-3 justify-content-center">
+      <h2>Occasions</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-container p-3">
+          <form #ngOccasion="ngForm" name="form" (ngSubmit)="addOccasion()" *ngIf="!isSuccessful" novalidate>
+  
+            <div class="form-group">
+              <label for="name">Name of Program</label>
+              <input type="text" class="form-control" name="name" [(ngModel)]="occasionResponse.name" 
+                #name="ngModel" />
+              <div class="alert-danger" *ngIf="ngOccasion.submitted && name.errors">
+                <div *ngIf="name.errors['name']">Invalid Name</div>
+              </div>
+            </div>
+  
+
+            <p>
+              <mat-form-field appearance="fill">
+                  <mat-label>Anchors</mat-label>
+                  <mat-select [(value)]="AnchorsselectedValue" multiple="true" >
+                  <mat-option *ngFor="let member of members" [value]="member.email">
+                      {{member.name}}
+                  </mat-option>
+                  </mat-select>
+              </mat-form-field>              
+            <p> Selected anchors: {{AnchorsselectedValue}} </p>
+  
+            <!-- <div class="form-group">
+              <label for="anchors">Anchors</label>
+              <input type="text" class="form-control" name="anchors" [(ngModel)]="occasionResponse.anchors" required
+                #anchors="ngModel" />
+              <div class="alert-danger" *ngIf="ngOccasion.submitted && anchors.errors">
+                <div *ngIf="anchors.errors['required']">Anchors are required</div>
+              </div>
+            </div> -->
+
+            <p>
+              <mat-form-field appearance="fill">
+                  <mat-label>Attendees</mat-label>
+                  <mat-select [(value)]="AttendeesselectedValue" multiple="true">
+                  <mat-option *ngFor="let member of members" [value]="member.email">
+                      {{member.name}}
+                  </mat-option>
+                  </mat-select>
+              </mat-form-field>              
+            <p> Selected attendees: {{AttendeesselectedValue}} </p>
+  
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date" name="startDate" [(ngModel)]="occasionResponse.startDate" 
+          #startDate="ngModel">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+        </mat-form-field>
+
+  
+            <div class="form-group">
+              <input class="btn btn-primary btn-block" type="submit" value="Create Occasion" />
+            </div>
+            <div class="alert alert-warning" *ngIf="ngOccasion.submitted && isOccasionFailed">
+              Creation failed!<br />{{ errorMessage }}
+            </div>
+          </form>
+          <div class="alert alert-success" *ngIf="isSuccessful">
+            Congrats!  {{ occasionResponse.name }} created successfully.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

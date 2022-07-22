@@ -1,0 +1,16 @@
+<h1 *ngIf="occasionDetails">{{occasionDetails.name}}</h1>
+
+<div class="main-content">
+    <mat-card class="list-homes" role="listitem">
+        <mat-card-title>
+            {{occasionDetails.name}}
+        </mat-card-title> 
+        <mat-card-content>
+            {{occasionDetails.startDate | date:'fullDate'}}
+        </mat-card-content>
+        <mat-card-actions>
+            <a class="action-link" [routerLink]="['/occasions/edit', occasionDetails.id]">Edit</a> | <a class="action-link" [routerLink]="['/occasions', occasionDetails.id]">View</a> | <a class="action-link" [routerLink]="['/occasions/delete', occasionDetails.id]">Delete</a>
+         </mat-card-actions>
+    </mat-card>      
+      
+</div>

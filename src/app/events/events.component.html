@@ -1,0 +1,96 @@
+<div class="container mt-3">
+    <div class="row m-3 justify-content-center">
+      <h2>Events</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-container p-3">
+          <form #ngEvent="ngForm"  name="form" (ngSubmit)="addEvent()" *ngIf="!isSuccessful" novalidate>
+  
+            <div class="form-group">
+              <label for="eventName">eventName</label>
+              <input type="text" class="form-control" name="eventName" [(ngModel)]="eventResponse.eventName" email
+                #eventName="ngModel" />
+              <div class="alert-danger" *ngIf="ngEvent.submitted && eventName.errors">
+                <div *ngIf="eventName.errors['required']">Invalid eventName</div>
+              </div>
+            </div>
+  
+<!--   
+            <div class="form-group">
+              <label for="eventAnchors">eventAnchors</label>
+              <input type="text" class="form-control" name="eventAnchors" [(ngModel)]="eventResponse.eventAnchorsId" required
+                #eventAnchors="ngModel" />
+              <div class="alert-danger" *ngIf="ngEvent.submitted && eventAnchors.errors">
+                <div *ngIf="eventAnchors.errors['required']">eventAnchors is required</div>
+              </div>
+            </div> -->
+
+
+            <p>
+              <mat-form-field appearance="fill">
+                  <mat-label>Attendee</mat-label>
+                  <mat-select [(value)]="eventAttendeesselectedValue" multiple="true">
+                  <mat-option *ngFor="let member of listMembers" [value]="member.email">
+                      {{member.name}}
+                  </mat-option>
+                  </mat-select>
+              </mat-form-field>              
+            <p> Selected member: {{eventAttendeesselectedValue}} </p>
+
+            <p>
+              <mat-form-field appearance="fill">
+                  <mat-label>Anchor</mat-label>
+                  <mat-select [(value)]="eventAchorsselectedValue" multiple="true">
+                  <mat-option *ngFor="let member of listMembers" [value]="member.email">
+                      {{member.name}}
+                  </mat-option>
+                  </mat-select>
+              </mat-form-field>              
+            <p> Selected member: {{eventAttendeesselectedValue}} </p>
+        <p>
+
+  
+            <!-- <div class="form-group">
+              <label for="eventAttendees">eventAttendees</label>
+              <input type="text" class="form-control" name="eventAttendees" [(ngModel)]="eventResponse.eventAttendeesId" required
+                #eventAttendees="ngModel" />
+              <div class="alert-danger" *ngIf="ngEvent.submitted && eventAttendees.errors">
+                <div *ngIf="eventAttendees.errors['required']">eventAttendees is required</div>
+              </div>
+            </div> -->
+            
+             <!-- <div class="form-group">
+              <label for="message">message</label>
+              <input type="text" class="form-control" name="message" [(ngModel)]="eventResponse.message" required
+                #message="ngModel" />
+              <div class="alert-danger" *ngIf="ngEvent.submitted && message.errors">
+                <div *ngIf="message.errors['required']">message is required</div>
+              </div>
+            </div> -->
+
+            <p>
+              <mat-form-field appearance="fill">
+                <mat-label>eventTime</mat-label>
+                <input matInput [matDatepicker]="picker" placeholder="eventTime" formControlName="eventTime">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              
+        </p>
+  
+            <div class="form-group">
+              <input class="btn btn-primary btn-block" type="submit" value="Create Event" />
+            </div>
+            <div class="alert alert-warning" *ngIf="ngEvent.submitted && isMemberFailed">
+              Creation failed!<br />{{ errorMessage }}
+            </div>
+          </form>
+          <div class="alert alert-success" *ngIf="isSuccessful">
+            Congrats!  {{ eventResponse.eventName }} created successfully as an event.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

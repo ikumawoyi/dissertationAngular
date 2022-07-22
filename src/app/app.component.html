@@ -1,0 +1,45 @@
+<div>
+  <nav class="navbar navbar-expand navbar-dark bg-success">
+    <a href="#" class="navbar-brand">{{ title }}</a>
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item">
+        <a href="/home" class="nav-link" routerLink="tasks">Home</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a href="/signup" class="nav-link" routerLink="signup">Sign up</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login">Login</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a href="/profile" class="nav-link" routerLink="profile">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a href="/members" class="nav-link" routerLink="members">Members</a>
+      </li>
+
+      <li class="nav-item">
+        <a href="/occasions" class="nav-link" routerLink="occasions">Occasions</a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="/memberlist" class="nav-link" routerLink="memberlist">All Members</a>
+      </li>
+
+      <li class="nav-item">
+        <a href="/occasionlist" class="nav-link" routerLink="occasionlist">All Occasions</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

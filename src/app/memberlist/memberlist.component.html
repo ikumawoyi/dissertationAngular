@@ -1,0 +1,44 @@
+<h1 *ngIf="listMembers">Displaying {{ listMembers.length}} Members</h1>
+<!-- <div class="main-content">
+        <mat-card class="list-homes" role="listitem" *ngFor="let member of listMembers">
+            <mat-card-title>
+                {{member.name}}
+            </mat-card-title> 
+            <mat-card-content>
+                {{member.email}}
+            </mat-card-content>
+            <mat-card-actions>
+                <a class="action-link" [routerLink]="['/members/edit', member.id]">Edit</a> | <a class="action-link" [routerLink]="['/members', member.id]">View</a> | <a class="action-link" [routerLink]="['/members/delete', member.id]">Delete</a>
+             </mat-card-actions>
+        </mat-card>      
+          
+</div> -->
+
+  <div class="list-homes">
+            <table id="customers">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone number</th>
+                    <th>Address</th>
+                    <th>DOB</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let member of listMembers">
+                    <td>{{ member.id }}</td>
+                    <td>{{ member.name }}</td>
+                    <td>{{ member.email }}</td>
+                    <td>{{ member.phoneNumber }}</td>
+                    <td>{{ member.address }}</td>
+                    <td>{{ member.dateOfBirth | date:'fullDate'}}</td>
+                    <td><a class="action-link" [routerLink]="['/members/edit', member.id]">Edit</a> | <a class="action-link" [routerLink]="['/members', member.id]">View</a> | <a class="action-link" [routerLink]="['/members/delete', member.id]">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+  

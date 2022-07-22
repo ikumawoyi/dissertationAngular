@@ -1,0 +1,42 @@
+<h1 *ngIf="listOccasions">Displaying {{ listOccasions.length}} Occasions</h1>
+<!-- <div class="main-content">
+        <mat-card class="list-homes" role="listitem" *ngFor="let member of listMembers">
+            <mat-card-title>
+                {{member.name}}
+            </mat-card-title> 
+            <mat-card-content>
+                {{member.email}}
+            </mat-card-content>
+            <mat-card-actions>
+                <a class="action-link" [routerLink]="['/members/edit', member.id]">Edit</a> | <a class="action-link" [routerLink]="['/members', member.id]">View</a> | <a class="action-link" [routerLink]="['/members/delete', member.id]">Delete</a>
+             </mat-card-actions>
+        </mat-card>      
+          
+</div> -->
+
+  <div class="list-homes">
+            <table id="customers">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Anchors</th>
+                    <th>Attendees</th>
+                    <th>Event Date</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let occasion of listOccasions">
+                    <td>{{ occasion.id }}</td>
+                    <td>{{ occasion.name }}</td>
+                    <td>{{ occasion.anchors }}</td>
+                    <td>{{ occasion.attendees }}</td>
+                    <td>{{ occasion.startDate | date:'fullDate' }}</td>
+                    <td><a class="action-link" [routerLink]="['/occasions/edit', occasion.id]">Edit</a> | <a class="action-link" [routerLink]="['/occasions', occasion.id]">View</a> | <a class="action-link" [routerLink]="['/occasions/delete', occasion.id]">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+  

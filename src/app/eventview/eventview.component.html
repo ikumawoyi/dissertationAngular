@@ -1,0 +1,16 @@
+<h1 *ngIf="eventDetails">{{eventDetails.eventName}}</h1>
+
+<div class="main-content">
+    <mat-card class="list-homes" role="listitem">
+        <mat-card-title>
+            {{eventDetails.eventAchors}}
+        </mat-card-title> 
+        <mat-card-content>
+            {{eventDetails.eventTime}}
+        </mat-card-content>
+        <mat-card-actions>
+            <a class="action-link" [routerLink]="['/members/edit', eventDetails.id]">Edit</a> | <a class="action-link" [routerLink]="['/members', eventDetails.id]">View</a> | <a class="action-link" [routerLink]="['/members/delete', eventDetails.id]">Delete</a>
+         </mat-card-actions>
+    </mat-card>      
+      
+</div>

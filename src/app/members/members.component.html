@@ -1,0 +1,71 @@
+<div class="container mt-3">
+    <div class="row m-3 justify-content-center">
+      <h2>Members</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-container p-3">
+          <form #ngMember="ngForm" name="form" (ngSubmit)="addMember()" *ngIf="!isSuccessful" novalidate>
+  
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" class="form-control" name="email" [(ngModel)]="memberResponse.email" email
+                #email="ngModel" />
+              <div class="alert-danger" *ngIf="ngMember.submitted && email.errors">
+                <div *ngIf="email.errors['email']">Invalid Email</div>
+              </div>
+            </div>
+  
+  
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" name="name" [(ngModel)]="memberResponse.name" required
+                #name="ngModel" />
+              <div class="alert-danger" *ngIf="ngMember.submitted && name.errors">
+                <div *ngIf="name.errors['required']">Name is required</div>
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <label for="address">Address</label>
+              <input type="text" class="form-control" name="address" [(ngModel)]="memberResponse.address" required
+                #address="ngModel" />
+              <div class="alert-danger" *ngIf="ngMember.submitted && address.errors">
+                <div *ngIf="address.errors['required']">Aaddress is required</div>
+              </div>
+            </div>
+            
+             <div class="form-group">
+              <label for="phoneNumber">Phone Number</label>
+              <input type="text" class="form-control" name="phoneNumber" [(ngModel)]="memberResponse.phoneNumber" required
+                #phoneNumber="ngModel" />
+              <div class="alert-danger" *ngIf="ngMember.submitted && phoneNumber.errors">
+                <div *ngIf="phoneNumber.errors['required']">Phone Number is required</div>
+              </div>
+            </div>
+
+            <p>
+              <mat-form-field appearance="fill">
+                <mat-label>Date of Birth</mat-label>
+                <input matInput [matDatepicker]="picker" placeholder="DateOfBirth" formControlName="dateOfBirth">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              
+        </p>
+  
+            <div class="form-group">
+              <input class="btn btn-primary btn-block" type="submit" value="Create Member" />
+            </div>
+            <div class="alert alert-warning" *ngIf="ngMember.submitted && isMemberFailed">
+              Creation failed!<br />{{ errorMessage }}
+            </div>
+          </form>
+          <div class="alert alert-success" *ngIf="isSuccessful">
+            Congrats!  {{ memberResponse.name }} created successfully as a member.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
